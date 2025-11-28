@@ -23,6 +23,7 @@ Handlers:
     - dependencies_handler: scans through mods folder for jar files, unpacks them,
       extracts dependancy info out of mcmod.info and generates a dependencies.json file.
     - search_handler: TODO
+    - config_handler: TODO
 
 
 
@@ -32,10 +33,13 @@ from pathlib import Path
 import jar_handler as jh
 import os
 import string
+import config_handler as cfgh
 
 
-# root = input("Please enter the minecraft folder root.")
-root = "/home/mortivarus/Games/Minecraft/MultiMC/install/instances/ATM6_custom/minecraft/"
+
+# Read config file
+config = cfgh.read_config("../options.cfg")
+root = config.get("folder_paths", "minecraft_folder")
 
 # os.chdir(root)
 
